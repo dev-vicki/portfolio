@@ -1,0 +1,185 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;700;800&display=swap");
+
+:root{
+    --main-background-color: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(192,57,43,1) 0%, rgba(255,94,98,1) 0%, rgba(142,68,173,1) 100%);
+    --light-gray: #bdc3c7;
+    --dark-color: #1a1a1a;
+    --separator-color: #2d3436;
+}
+
+body{
+    background: var(--main-background-color);
+    font-family: "Manrope", sans-serif;
+    color: #fff;
+    padding: 0;
+    margin: 0;
+}
+
+/**navigation bar**/
+.navigation {
+    background-color: var(--dark-color);
+    text-decoration: none;
+    border-radius: 0rem 0rem 2rem 2rem;
+    color: var(--light-gray);
+    border-style: none none none;
+}
+
+.navigation .nav-logo {
+    max-width: 50px;
+    border-radius: 50rem;
+    text-align: center;
+    padding: 0px;
+    margin: 0px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.navigation .nav-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 10px;
+    margin: 0px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.nav-pill {
+    text-align: right;
+    padding-right: 2rem;
+}
+
+.nav-pill .link {
+    color: var(--light-gray);
+}
+
+.navigation .link-active {
+    font-weight: bold;
+    color: var(--light-gray);
+    border-style: solid none none none;
+}
+
+/**links**/
+.link {
+    text-decoration: none;
+    color: var(--separator-color);
+    padding: 0.4rem 0.8rem;
+}
+
+.primary-link {
+    background-color: var(--light-gray);
+    border-radius: 0.25rem;
+    border: 2rem;
+}
+
+.secondary-link {
+    background-color: var(--separator-color);
+    color: var(--light-gray);
+    border-radius: 0.25rem;
+    border: 1px dashed;
+}
+
+/**list**/
+.list-non-bullet {
+    list-style: none;
+}
+
+.list-item-inline {
+    display: inline;
+    padding: 0rem 1rem;
+}
+
+/* hero section */
+.hero {
+    padding: 2rem;
+    text-align: center;
+}
+
+.hero .hero-img {
+    max-width: 450px;
+    display: block;
+    margin: auto;
+    padding-bottom: 0;
+}
+
+.hero .heading-inverse {
+    color: var(--separator-color);
+}
+
+hr {
+    margin: 1.5rem 0rem;
+}
+
+/**containers**/
+.container {
+    padding: 0rem 1rem;
+}
+
+.container-center {
+    max-width: 600px;
+    margin: auto;
+}
+
+/** section **/
+.section {
+    padding: 2rem;
+    padding-bottom: 3rem;
+}
+
+.section h1 {
+    text-align: center;
+}
+
+.section .heading {
+    color: var(--separator-color);
+}
+
+
+.dark-section {
+    background-color: var(--dark-color);
+}
+
+/** badge **/
+.badge {
+    margin-left: 1rem;
+    text-align: center;
+    max-width: 80px;
+    padding: 0.2rem;
+    margin-top: 1rem;
+    margin-left: 0;
+    background-color: var(--separator-color);
+    border: 0.5px solid;
+    border-color: var(--light-gray);
+    color: var(--light-gray);
+    border-radius: 2rem;
+    font-size: smaller;
+}
+
+/** footer **/
+
+.footer {
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(192,57,43,1) 0%, rgba(255,94,98,1) 0%, rgba(142,68,173,1) 100%);
+    border-radius: 0 3rem 0 0;
+    padding: 1rem 0rem 0.5rem 0rem;
+    text-align: center;
+}
+
+.footer-header {
+    color: var(--dark-color);
+    font-weight: bolder;
+    font-size: x-large;
+}
+
+.footer ul {
+    padding-inline-start: 0px;
+}
+
+.footer img {
+    width: 50px;
+}
+
+.footer-footer {
+    color: var(--dark-color);
+    font-weight: bold;
+    margin-top: 1rem;
+}
