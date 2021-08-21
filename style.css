@@ -76,7 +76,7 @@ body{
     background-color: var(--separator-color);
     color: var(--light-gray);
     border-radius: 0.25rem;
-    border: 1px dashed;
+    border: 1px;
 }
 
 /**list**/
