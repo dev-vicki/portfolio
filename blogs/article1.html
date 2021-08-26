@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How JavaScript is rendered in the browser</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header> <a href="/blogs.html"> ⬅ back</a> </header>
+
+    <main class="post">
+        <h1 class="article-heading">How JavaScript is Rendered</h1>
+        <h2 class="article-heading2">Understanding the internal working of the browser</h2>
+        <P class="published-date"> 7th August, 2021</P>
+        <p class="author">by Vignesh | @dev-vicki</p>
+        <p class="blog-cover">
+            <img src="../assets/cover.png" alt="blog-cover">
+        </p>
+
+        <article class="content">
+            <blockquote> The expert in anything was once a beginner.</blockquote>
+
+            <p>The above quote gave me the confidence to write my first ever blog.
+                This article aims to cover how exactly javascript is rendered to the browser and a little background of
+                where it starts and how it completes its rendering.</p>
+
+            <h3>TLDR;</h3>
+            <ul>
+                <li>how a web browser works</li>
+                <li>how the rendering engine works inside the browser</li>
+                <li>how the script tags are injected </li>
+                <li> different behaviors of a script tag with async and defer attributes</li>
+                <li>which attribute to use when </li>
+            </ul>
+            <blockquote>Let's get started 🥳</blockquote>
+
+            <h2>How a web browser works</h2>
+            <h3><i>So it all starts when you type a URL and hit enter.</i></h3>
+            <p>The primary function of a web browser is to request resources from the web and display them inside of a
+                browser window. Typically a browser will request HTML, CSS, JavaScript, and image content from a server
+                and interpret them based on web standards and specifications. They follow standards because it allows
+                websites to behave the same way across all browsers. </p>
+
+            <h2>Let’s Focus on the Rendering Engine</h2>
+            <p>The rendering engine has a very important job as it displays what you see on your screen. It communicates
+                with the networking layer of the browser to grab HTML code and other items are passed from a server.
+                <br>
+                It follows some steps sequentially:</p>
+            <ol>
+                <li>Parsing HTML and Creating DOM Tree</li>
+                <li>Render the Constructed Tree</li>
+                <li>Layout</li>
+                <li>Paint</li>
+            </ol>
+            <p><b>1. Parsing HTML and Creating DOM Tree : </b> HTML is a hierarchal structure that begins with a tag,
+                usually contains a and tag, and elements can be nested within elements. These HTML elements are parsed
+                and turned into a “DOM tree” by the rendering engine. It is a tree-like structure made out of HTML,
+                where each tag is a branch starting at the root element.</p>
+            <img src="../assets/dom.png" alt="">
+
+            <p><b>2. Render the Constructed Tree : </b> CSS attributes are also parsed and combined with the DOM tree
+                (also known as Cascading Style Sheet Object Model - CSSOM) to create a “render tree”. This is a tree of
+                visual elements such as height,width and color ordered in the hierarchy in which they are to be
+                displayed in the browser.</p>
+            <img src="../assets/renderingTree.png" alt="">
+
+            <p><b>3. Layout :</b>
+                Once the render tree is constructed, the rendering engine recursively goes through the HTML elements in
+                the tree and figures out where they should be placed on the screen. This starts at the top left in
+                position 0,0 and elements and attributes are mapped to coordinates on the screen.</p>
+            <p><b>4. Paint :</b> Each node of the render tree is drawn out on the screen by communicating with the
+                Operating System Interface which contains designs and styles for how UI elements should look.</p>
+
+            <blockquote>The most awaited part 🤩 How .js files loaded in the browsers</blockquote>
+
+            <h2>Let's get to know how script tag is injected</h2>
+            <p>When the browser loads HTML and comes across a script tag, it can’t continue building the DOM. It must
+                execute the script right now. The same happens for external scripts the browser must wait for the script
+                to download, execute the downloaded script, and only then can it process the rest of the page.</p>
+
+            <h2>The different scenarios of using script tag in code </h2>
+            <h3>Script vs Defer vs Async</h3>
+            <h3>The Normal Script Tag</h3>
+            <img src="../assets/normalScript.png" alt="">
+            <p>while the HTML parsing the code line by line and when it encounters script tag, then the browser stops
+                the parsing and fetches the scripts from the network, and executes the downloaded scripts then and there
+                only. then the remaining HTML parsing continues, so at that point in time, there is a delay in the
+                parsing of HTML.</p>
+            <blockquote>Note: we may not know that how long does it takes to fetch from the network and executing it in
+                the browser.</blockquote>
+
+            <h3>Using Defer Attribute</h3>
+            <img src="../assets/defer.png" alt="">
+            <p>The defer attribute tells the browser not to wait for the script. Instead, the browser will continue to
+                process the HTML, build DOM. The script loads “in the background”, and then runs when the DOM is fully
+                built.</p>
+            <ul>
+                <li>Scripts with defer never block the page.</li>
+                <li>Scripts with defer always execute when the DOM is ready</li>
+            </ul>
+
+            <h3>Using Async Attribute</h3>
+            <img src="../assets//async.png" alt="">
+            <p>The async attribute is somewhat like defer. It also makes the script non-blocking. But it has important
+                differences in the behavior. The async attribute means that a script is completely independent:</p>
+            <ul>
+                <li>The browser doesn’t block on async scripts (like defer).</li>
+                <li>Other scripts don’t wait for async scripts, and async scripts don’t wait for them.</li>
+            </ul>
+            <h2>when to use async and defer the most confusing part</h2>
+            <ul>
+                <li>Async does not guarantee the order of execution of scripts but defer guarantees it.</li>
+                <li>if you have multiple scripts which are dependent on each other then defer suits best.</li>
+                <li>suppose if you have to load some external scripts which are independent of your code, then async
+                    suits best.</li>
+            </ul>
+
+            <h2>Wrap</h2>
+            <p>you should be using the defer attribute as default because it is recommended the most because it does not
+                pause the HTML parsing and scripts are fetched from the network and once the parsing is completed the
+                scripts are executed.</p>
+            <blockquote> Happy Coding! 😊</blockquote>
+        </article>
+    </main>
+    <footer class="footer">
+        <div class="footer-header">Connect with me</div>
+        <ul class="social-links list-non-bullet">
+            <li class="list-item-inline"><a class="link" href="https://github.com/dev-vicki"><img
+                        src="../assets/github.png" alt=""></a></li>
+            <li class="list-item-inline"><a class="link" href="https://www.linkedin.com/in/vignesh77/"><img
+                        src="../assets/linkedin.png" alt=""></a></li>
+            <li class="list-item-inline"><a class="link" href="https://twitter.com/dev_vicki"><img
+                        src="../assets/twitter.png" alt=""></a></li>
+            <div class="footer-footer">made with ❤ by vignesh</div>
+    </footer>
+</body>
+
+</html>
