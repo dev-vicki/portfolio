@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temporal Dead Zone</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header> <a href="/blogs.html"> ⬅ back</a> </header>
+
+    <main class="post">
+        <h1 class="article-heading">A Deep Dive into Temporal Dead Zone 🧟‍♂️</h1>
+        <h2 class="article-heading2">Understanding What, Why and how of TDZ in JavaScript.</h2>
+        <P class="published-date"> 27th August, 2021</P>
+        <p class="author">by Vignesh | @dev-vicki</p>
+        <p class="blog-cover">
+            <img src="../assets/cover2.png" alt="blog-cover">
+        </p>
+        <article class="content">
+
+
+            <p>Hello reader, hope you are doing awesome. This blog aims to break down that zombie feeling inside you
+                when you again come across TDZ. We will explore what the temporal dead zone in javascript is and how it
+                works.</p>
+
+            <p>Before getting to know about tdz we should be aware of some core concepts in javascript to understand it
+                better, you can treat the below points as pre-requistis oresle feel free to skip and move to Tdz.</p>
+
+            <h3>TL;DR</h3>
+            <ul>
+                <li>Variable Declaration and Initialization</li>
+                <li>Scopes and its types</li>
+                <li>Hoisting</li>
+                <li>most awaited part TDZ </li>
+                <li>wrapping with a quote!</li>
+            </ul>
+            <i> So let us start!!!</i>
+
+            <p>Before ES6 there was no other way to declare variables other than var keyword. <br> But ES6 brought
+                us two different keywords let and const, both declarations are block-scoped, which means they are only
+                accessible within the { } surrounding them. var, on the other side, don’t have any such restriction.</p>
+
+            <h3>Let us know what Variable Declaration and Initialization </h3>
+            <p><b>Variable Declaration : </b> process of creating a new variable within any 3 keywords (var, let, const)
+            </p>
+            <code><b>var blog;</b></code>
+            <p>Above we create a variables called blog. In JavaScript, variables are initialized with the value of
+                <b>Undefined</b> when they are created. What that means is if we try to log the blog variable, we’ll get
+            </p>
+            <img src="../assets/var.jpg" alt="Variable declaration">
+
+            <p><b>Variable Initialization : </b> process of assigning a value to a variable.</p>
+            <img src="../assets/var init.jpg" alt="">
+            <p>So here we’re initializing the blog variable by assigning it to a string and this takes us to next
+                concept scopes.</p>
+
+
+            <h3>what a scope means and its types </h3>
+            <p>Scope defines where variables and functions are accessible inside of your program. In JavaScript, there
+                are three kinds of scope - global scope and function/local scope and block scope.</p>
+
+            <ul>
+                <li> <b>Global scope : </b> is a scope outside any function or code block. Variables declared in a
+                    global scope are visible and accessible everywhere.</li>
+                <li> <b>Local or function scope: </b> is a scope inside functions. When you create a function you also
+                    create a local scope. Variables you declare in a local scope are accessible and visible only inside
+                    that scope, not outside it.</li>
+                <li> <b>block scope : </b> is created by using a pair of curly brackets.</li>
+            </ul>
+            <img src="../assets/scopes.jpg" alt="">
+
+
+            <h3>Then what is Hoisting ?</h3>
+            <p>This process of assigning variable declarations a default value of undefined during the creation phase is
+                called Hoisting. if you try access one of those variables before it was actually declared, you’ll just
+                get undefined.</p>
+            <p>But with functions its bit different you will get the entire function when you try to access or log </p>
+
+            <img src="../assets/codeHoisting.jpg" alt="">
+            <img src="../assets//outputHoisting.jpg" alt="">
+
+            <p> fill the transition phase over here!!! </p>
+
+            <blockquote> <i>The most awaited part 🤩 comes here</i> </blockquote>
+
+            <h3>Let’s focus on WHAT is Temporal Dead Zone</h3>
+            <p> By now you have understood variable declaration and initialization, scopes and hoisting. Now, let’s
+                finally talk about what the temporal dead zone in JavaScript is. In short, temporal dead zone describes
+                a zone where variables are un-reachable. These are the variables in the current scope. However, these
+                variables were not assigned values yet.</p>
+
+            <p>Trying to access those variables inside the temporal dead zone and JavaScript will throw a
+                ReferenceError. This error will say that variable is not defined. One thing to remember. Temporal dead
+                zone exists only for let and const variables. These two variables exist in the temporal dead zone from
+                the start until you initialize them with a value.</p>
+
+            <h3> Now let’s explore the WHY part of tdz</h3>
+            <p>You know what the temporal dead zone in JavaScript is. Let’s also quickly talk about why it exists.
+                Whenever you run your JavaScript code it goes through two phases. The first phase is called compilation,
+                or creation. During this phase, your code is being compiled into byte code.
+                The second phase is called as execution phase. During this phase, your code is being executed and your
+                variables are assigned their values. 
+            </p>
+
+            <blockquote>"Everything in Javascript happens inside an Execution Context" - Akshay Saini</blockquote>
+
+            <p>During the compilation phase, the JavaScript engine goes through your code. It <b>Collects</b> variables
+                and allocates memory for them, and also for function declarations. At this moment, the variables you
+                declared with var are assigned the default value of undefined. Memory will also be allocated
+                for let and const variables, but no values will be assigned.</p>
+
+            <p><b>Let me ask you this question does let and const are hoisted? </b> <br>
+                <b> Answer: Yes. </b> To know more. Check out this link <a
+                    href="https://developer.mozilla.org/en-US/docs/Glossary/Hoisting">MDN</a> </p>
+
+
+            <p>This is the reason why the temporal dead zone exists, at least for let and const. In case of let and
+                const, there is a moment when these variables are declared, but not initialized. Remember, declaration
+                happens in the first phase, while initialization in the second.</p>
+
+            <p>This means that, during the first phase, let and const exist in the temporal dead zone. This is because
+                they are not initialized with any value. On the other hand, the var is always initialized with the value
+                of undefined by default. That’s why it is never in the temporal dead zone.</p>
+
+            <p>When the JavaScript engine enters the second phase it initializes let and const variables. This is the
+                moment when these variables can leave the temporal dead zone. Note that when this happens depends on
+                when you initialize those variables in your code.</p>
+
+            <p>So, remember, all variables get hoisted. However, when var variables are hoisted they are also
+                initialized with the value of undefined. When the let and const are hoisted they are not initialized
+                with any value. That is the reason the temporal dead zone exists and why it exists only
+                for let and const and not var.</p>
+
+            <h3>Wrapping up with especially this quote</h3>
+            <p>Temporal dead zone in JavaScript (TDZ) may sound complicated. It is not. It can be relatively easy.
+                Especially if you understand how variables, scope and their declaration and initialization works.</p>
+            <blockquote> ES6 is not new stuff but new ways of doing old stuff - kyle simpson </blockquote>
+            <i> Thank you for reading, hope this jargon word (TDZ) never daunts you again and Happy coding 😊 </i>
+        </article>
+
+
+    </main>
+    <footer class="footer">
+        <div class="footer-header">Connect with me</div>
+        <ul class="social-links list-non-bullet">
+            <li class="list-item-inline"><a class="link" href="https://github.com/dev-vicki"><img
+                        src="../assets/github.png" alt=""></a></li>
+            <li class="list-item-inline"><a class="link" href="https://www.linkedin.com/in/vignesh77/"><img
+                        src="../assets/linkedin.png" alt=""></a></li>
+            <li class="list-item-inline"><a class="link" href="https://twitter.com/dev_vicki"><img
+                        src="../assets/twitter.png" alt=""></a></li>
+            <div class="footer-footer">made with ❤ by vignesh</div>
+    </footer>
+</body>
+
+</html>
