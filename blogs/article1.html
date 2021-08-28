@@ -18,7 +18,7 @@
         <P class="published-date"> 24th August, 2021</P>
         <p class="author">by Vignesh | @dev-vicki</p>
         <p class="blog-cover">
-            <img src="../assets/cover.png" alt="blog-cover">
+            <img src="../assets/cover.png" alt="blog-cover" loading="lazy">
         </p>
 
         <article class="content">
@@ -55,13 +55,13 @@
                 usually contains a and tag, and elements can be nested within elements. These HTML elements are parsed
                 and turned into a “DOM tree” by the rendering engine. It is a tree-like structure made out of HTML,
                 where each tag is a branch starting at the root element.</p>
-            <img src="../assets/dom.png" alt="">
+            <img src="../assets/dom.png" alt="DOM">
 
             <p><b>2. Render the Constructed Tree : </b> CSS attributes are also parsed and combined with the DOM tree
                 (also known as Cascading Style Sheet Object Model - CSSOM) to create a “render tree”. This is a tree of
                 visual elements such as height,width and color ordered in the hierarchy in which they are to be
                 displayed in the browser.</p>
-            <img src="../assets/renderingTree.png" alt="">
+            <img src="../assets/renderingTree.png" alt="Render Tree">
 
             <p><b>3. Layout :</b>
                 Once the render tree is constructed, the rendering engine recursively goes through the HTML elements in
@@ -80,7 +80,7 @@
             <h2>The different scenarios of using script tag in code </h2>
             <h3>Script vs Defer vs Async</h3>
             <h3>The Normal Script Tag</h3>
-            <img src="../assets/normalScript.png" alt="">
+            <img src="../assets/normalScript.png" alt="Normal Script">
             <p>while the HTML parsing the code line by line and when it encounters script tag, then the browser stops
                 the parsing and fetches the scripts from the network, and executes the downloaded scripts then and there
                 only. then the remaining HTML parsing continues, so at that point in time, there is a delay in the
@@ -89,7 +89,7 @@
                 the browser.</blockquote>
 
             <h3>Using Defer Attribute</h3>
-            <img src="../assets/defer.png" alt="">
+            <img src="../assets/defer.png" alt="Defer Attribute">
             <p>The defer attribute tells the browser not to wait for the script. Instead, the browser will continue to
                 process the HTML, build DOM. The script loads “in the background”, and then runs when the DOM is fully
                 built.</p>
@@ -99,7 +99,7 @@
             </ul>
 
             <h3>Using Async Attribute</h3>
-            <img src="../assets//async.png" alt="">
+            <img src="../assets//async.png" alt="Async Attribute">
             <p>The async attribute is somewhat like defer. It also makes the script non-blocking. But it has important
                 differences in the behavior. The async attribute means that a script is completely independent:</p>
             <ul>
@@ -124,12 +124,12 @@
     <footer class="footer">
         <div class="footer-header">Connect with me</div>
         <ul class="social-links list-non-bullet">
-            <li class="list-item-inline"><a class="link" href="https://github.com/dev-vicki"><img
-                        src="../assets/github.png" alt=""></a></li>
-            <li class="list-item-inline"><a class="link" href="https://www.linkedin.com/in/vignesh77/"><img
-                        src="../assets/linkedin.png" alt=""></a></li>
-            <li class="list-item-inline"><a class="link" href="https://twitter.com/dev_vicki"><img
-                        src="../assets/twitter.png" alt=""></a></li>
+            <li class="list-item-inline"><a class="link" href="https://github.com/dev-vicki" target="_blank"><img
+                        src="../assets/github.png" alt="Github"></a></li>
+            <li class="list-item-inline"><a class="link" href="https://www.linkedin.com/in/vignesh77/" target="_blank"><img
+                        src="../assets/linkedin.png" alt="linkedin"></a></li>
+            <li class="list-item-inline"><a class="link" href="https://twitter.com/dev_vicki" target="_blank"><img
+                        src="../assets/twitter.png" alt="twitter"></a></li>
             <div class="footer-footer">made with ❤ by vignesh</div>
     </footer>
 </body>
